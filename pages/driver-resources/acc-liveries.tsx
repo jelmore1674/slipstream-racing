@@ -1,0 +1,84 @@
+import { PDFViewer } from '@components';
+import {
+	ButtonGrid,
+	CTAButton,
+	DownloadButton,
+	IFrame,
+	PageHeading,
+	Section,
+	VideoPlayer,
+} from 'components/Elements';
+import Link from 'next/link';
+import React from 'react';
+import { FaDownload } from 'react-icons/fa';
+
+const imgPath =
+	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/driver-resources/acc-liveries';
+
+const AccLiveries = () => {
+	return (
+		<div>
+			<PageHeading>ACC Custom Liveries</PageHeading>
+			<Section grid='1200'>
+				<h2>Uploading Custom Liveries</h2>
+				<VideoPlayer url={`${imgPath}/uploading-liveries.mp4`} />
+			</Section>
+			<Section grid='1200'>
+				<h2>Custom Liveries</h2>
+				<ol>
+					<li>
+						To upload a custom livery the folder name must be in the
+						following format (
+						<i>
+							SRL-First 3 Letters of Moniker Last
+							Name-CAR-LIVERYNAME
+						</i>
+						) (Ex. <b>SRL-ELM-488EVO-TRASHPANDAS</b>)
+					</li>
+					<li>
+						Try to keep the content of the liveries to PG-13
+						content. If a livery has anything offensive report it to
+						an Admin and it will be reviewed.
+					</li>
+					<li>
+						Due to lag spike if using a custom livery try to join
+						session during practice to be courteous to other
+						drivers.
+					</li>
+				</ol>
+			</Section>
+			<PDFViewer pdf='/assets/renaming-liveries.pdf' singlePage />
+			<Section grid='1200'>
+				<h2>Click Here To Upload Liveries</h2>
+				<IFrame
+					src='https://drive.google.com/embeddedfolderview?id=1eN41OlAcwsud8-ukkE2qUk8kL7_iz3kS#list'
+					width='100%'
+					height='600px'
+				/>
+			</Section>
+			<Section grid='1200'>
+				<h2>TeamSync Setup</h2>
+				<VideoPlayer url={`${imgPath}/teamsync-setup.mp4`} />
+			</Section>
+
+			<Section grid='1200'>
+				<ButtonGrid grid='300px'>
+					<DownloadButton
+						href='https://www.racedepartment.com/downloads/teamsync.33521/'
+						target={'_blank'}>
+						TeamSync App
+					</DownloadButton>
+					<DownloadButton
+						href={'/assets/teamsync/settings.json'}
+						download
+						color='green'>
+						TeamSync Settings File
+						<FaDownload />
+					</DownloadButton>
+				</ButtonGrid>
+			</Section>
+		</div>
+	);
+};
+
+export default AccLiveries;
