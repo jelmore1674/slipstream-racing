@@ -1,5 +1,5 @@
 const imgPath =
-	'http://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/';
+	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/';
 
 export const data = {
 	navItems: [
