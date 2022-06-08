@@ -104,7 +104,6 @@ export const IFrame = styled.iframe<any>((p) => {
 	return {
 		backgroundColor: '#ffffff',
 		border: 'none',
-		height: '100%',
 		width: '100%',
 	};
 });

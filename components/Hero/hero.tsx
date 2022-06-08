@@ -10,6 +10,11 @@ const HeroWrapper = styled.div(({ src }: any) => ({
 	backgroundSize: 'cover',
 	height: '100vh',
 	width: '100vw',
+	'@media (max-width: 768px)': {
+		backgroundAttachment: 'scroll',
+		height: '100%',
+		paddingTop: 80,
+	},
 }));
 
 const LogoContainer = styled.div({
@@ -29,6 +34,11 @@ const Logo = styled.div({
 	'@media (max-width: 768px)': {
 		padding: '3rem',
 		position: 'static',
+	},
+	'@media (max-width: 480px)': {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });
 
