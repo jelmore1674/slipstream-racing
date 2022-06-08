@@ -33,7 +33,7 @@ const Logo = styled.div({
 });
 
 const logoPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/Home/logo.png';
+	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/home/';
 
 interface Props {
 	backgroundImage: string;
