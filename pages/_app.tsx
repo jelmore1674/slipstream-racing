@@ -8,7 +8,7 @@ import { client, devClient } from '../lib/apollo';
 import { globalStyles, theme } from '../styles/global';
 
 const imagePath =
-	'http://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing';
+	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
