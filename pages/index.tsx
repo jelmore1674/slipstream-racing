@@ -9,7 +9,7 @@ import { client } from '../lib/apollo';
 import { Fragment } from 'react';
 
 const imgPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/Home';
+	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/home';
 
 const Home: NextPage = ({ data }: any) => {
 	const { copy, youtubeLink } = data;
