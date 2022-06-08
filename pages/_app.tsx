@@ -4,7 +4,7 @@ import { Global, ThemeProvider } from '@emotion/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Layout } from '../layouts/layout';
-import { client, slipClient } from '../lib/apollo';
+import { client, devClient } from '../lib/apollo';
 import { globalStyles, theme } from '../styles/global';
 
 const imagePath =
@@ -13,7 +13,7 @@ const imagePath =
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ApolloProvider client={client}>
-			<ApolloProvider client={slipClient}>
+			<ApolloProvider client={devClient}>
 				<ThemeProvider theme={theme}>
 					<NavContextProvider>
 						<Head>
