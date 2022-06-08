@@ -7,11 +7,11 @@
 // import { gql } from '@apollo/client';
 // import { client } from '../../lib/apollo';
 
-const Post = ({ data }: any) => {
-	const { title, content } = data;
+const Post = () => {
+	// const { title, content } = data;
 	return (
 		<div>
-			<h1>{title}</h1>
+			<h1>Test</h1>
 			{/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
 		</div>
 	);
