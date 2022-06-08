@@ -7,6 +7,9 @@ import {
 	Section,
 	VideoPlayer,
 } from 'components/Elements';
+import Link from 'next/link';
+import { DISCORD_URL, SIMRACINGGP_URL } from '@data';
+import { openInNewTab } from 'lib/helperFunctions';
 
 const Heading = styled.h1({
 	fontSize: '3rem',
@@ -46,10 +49,14 @@ export const IntroSection = ({ copy, youtubeLink }: Props): JSX.Element => {
 				<Heading>Slipstream Racing</Heading>
 				<Content dangerouslySetInnerHTML={{ __html: copy }} />
 				<ButtonGrid grid={'100px'}>
-					<CTAButton color='#5865F2'>
+					<CTAButton
+						color='#5865F2'
+						onClick={() => openInNewTab(DISCORD_URL)}>
 						Discord <SiDiscord />
 					</CTAButton>
-					<CTAButton>Sign Up</CTAButton>
+					<CTAButton onClick={() => openInNewTab(SIMRACINGGP_URL)}>
+						Sign Up
+					</CTAButton>
 				</ButtonGrid>
 			</Column>
 			<Column>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { CDN } from '@data';
 
 const HeroWrapper = styled.div(({ src }: any) => ({
 	backgroundAttachment: 'fixed',
@@ -42,8 +43,7 @@ const Logo = styled.div({
 	},
 });
 
-const logoPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/home/logo.png';
+const logoPath = `${CDN}/home/logo.png`;
 
 interface Props {
 	backgroundImage: string;

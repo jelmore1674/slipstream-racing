@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import NavContext from 'context/nav-context';
 import { NavItem } from './navItem';
 import { FaBars } from 'react-icons/fa';
+import { SIMRACINGGP_URL } from '@data';
 
 const NavListWrapper = styled.div<any>((p) => {
 	const { mobile } = p;
@@ -59,7 +60,7 @@ export const NavList: React.FC<Props> = ({ navItems, mobile }) => {
 					<NavItem href={href} name={name} subMenu={subMenu} />
 				</NavItemsWrapper>
 			))}
-			<NavItem href='/outsite-link' name='Sign Up' signUp />
+			<NavItem href={SIMRACINGGP_URL} name='Sign Up' signUp />
 		</NavListWrapper>
 	);
 };

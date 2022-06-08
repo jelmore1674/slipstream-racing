@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { FaAngleDown } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import NavContext from 'context/nav-context';
+import { SIMRACINGGP_URL } from '@data';
+import { openInNewTab } from 'lib/helperFunctions';
 
 const NavItemWrapper = styled.a<any>((p) => {
 	const { active, signUp } = p;
@@ -105,11 +107,18 @@ export const NavItem = ({ href, subMenu, name, signUp }: Props) => {
 		React.useContext(NavContext);
 	const router = useRouter();
 
+	const handleSignUp = (): void => {
+		setMobileDropdown(false);
+		if (href === SIMRACINGGP_URL) {
+			openInNewTab(href);
+		}
+	};
+
 	return (
 		<>
 			<Link href={href}>
 				<NavItemWrapper
-					onClick={() => setMobileDropdown(false)}
+					onClick={handleSignUp}
 					active={
 						href === router.pathname ||
 						subMenu?.some((item) => item.href === router.pathname)

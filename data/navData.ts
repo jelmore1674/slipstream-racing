@@ -1,7 +1,6 @@
-const imgPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/';
-
-export const data = {
+import { CDN } from './data';
+// NavData
+export const NAV_DATA = {
 	navItems: [
 		{
 			name: 'Home',
@@ -26,5 +25,5 @@ export const data = {
 			],
 		},
 	],
-	src: `${imgPath}favicon.png`,
+	src: `${CDN}/favicon.png`,
 };

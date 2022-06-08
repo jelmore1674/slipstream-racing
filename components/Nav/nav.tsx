@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { NavList } from './navList';
 import { NavLogo } from './navLogo';
-import { data } from './data';
+import { NAV_DATA } from 'data/navData';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import NavContext from 'context/nav-context';
 
@@ -34,7 +34,7 @@ const IconWrapper = styled.div({
 });
 
 export const Nav = () => {
-	const { navItems, src } = data;
+	const { navItems, src } = NAV_DATA;
 	const { mobileDropdown, setMobileDropdown } = React.useContext(NavContext);
 
 	return (
@@ -44,11 +44,13 @@ export const Nav = () => {
 				<IconWrapper>
 					{mobileDropdown ? (
 						<FaTimes
+							style={{ cursor: 'pointer' }}
 							size={'3rem'}
 							onClick={() => setMobileDropdown(!mobileDropdown)}
 						/>
 					) : (
 						<FaBars
+							style={{ cursor: 'pointer' }}
 							size={'3rem'}
 							onClick={() => setMobileDropdown(!mobileDropdown)}
 						/>

@@ -1,4 +1,5 @@
 import { PDFViewer } from '@components';
+import { CDN } from '@data';
 import {
 	ButtonGrid,
 	CTAButton,
@@ -12,8 +13,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaDownload } from 'react-icons/fa';
 
-const imgPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/driver-resources/acc-liveries';
+const imgPath = `${CDN}/driver-resources/acc-liveries`;
 
 const AccLiveries = () => {
 	return (
@@ -49,7 +49,17 @@ const AccLiveries = () => {
 			</Section>
 			<PDFViewer pdf='/assets/renaming-liveries.pdf' singlePage />
 			<Section grid='1200'>
-				<h2>Click Here To Upload Liveries</h2>
+				<a
+					rel='noopener noreferrer'
+					target='_blank'
+					href='https://drive.google.com/drive/folders/1eN41OlAcwsud8-ukkE2qUk8kL7_iz3kS'>
+					<h2>
+						<i>
+							Link to Google Drive Livery Folder (Please Click
+							Here to Upload Livery)
+						</i>
+					</h2>
+				</a>
 				<IFrame
 					src='https://drive.google.com/embeddedfolderview?id=1eN41OlAcwsud8-ukkE2qUk8kL7_iz3kS#list'
 					width='100%'

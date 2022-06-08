@@ -7,9 +7,9 @@ import Link from 'next/link';
 import { Hero, HostedSection, IntroSection } from '@components';
 import { client } from '../lib/apollo';
 import { Fragment } from 'react';
+import { CDN } from '@data';
 
-const imgPath =
-	'https://jelmoreassets.nyc3.cdn.digitaloceanspaces.com/SlipstreamRacing/home';
+const imgPath = `${CDN}/home`;
 
 const Home: NextPage = ({ data }: any) => {
 	const { copy, youtubeLink } = data;
