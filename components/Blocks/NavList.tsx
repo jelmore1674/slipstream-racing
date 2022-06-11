@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import NavContext from 'context/nav-context';
-import { NavItem } from './navItem';
+import { NavItem } from './NavItems';
 import { FaBars } from 'react-icons/fa';
 import { SIMRACINGGP_URL } from '@data';
 

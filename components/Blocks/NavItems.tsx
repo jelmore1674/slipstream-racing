@@ -6,8 +6,13 @@ import { useRouter } from 'next/router';
 import NavContext from 'context/nav-context';
 import { SIMRACINGGP_URL } from '@data';
 import { openInNewTab } from 'lib/helperFunctions';
+import { ThemeProps } from '@types';
 
-const NavItemWrapper = styled.a<any>((p) => {
+const NavItemWrapper = styled.a<{
+	active?: boolean;
+	signUp?: boolean;
+	theme?: ThemeProps;
+}>((p) => {
 	const { active, signUp } = p;
 	return {
 		backgroundColor: signUp ? '#fff' : '',
@@ -40,7 +45,7 @@ const NavItemWrapper = styled.a<any>((p) => {
 	};
 });
 
-const Dropdown = styled.div((p: any) => {
+const Dropdown = styled.div<{ theme?: ThemeProps; mobile?: boolean }>((p) => {
 	const { mobile } = p;
 	return {
 		backgroundColor: p.theme.colors.primary,
@@ -66,7 +71,7 @@ const Dropdown = styled.div((p: any) => {
 	};
 });
 
-const DropdownItem = styled.a((p: any) => {
+const DropdownItem = styled.a<{ theme?: ThemeProps }>((p) => {
 	return {
 		cursor: 'pointer',
 		margin: '0',
@@ -127,7 +132,7 @@ export const NavItem = ({ href, subMenu, name, signUp }: Props) => {
 					{name} {subMenu && <FaAngleDown />}
 				</NavItemWrapper>
 			</Link>
-			{dropdown && subMenu && subMenu === dropdownItem.subMenu && (
+			{dropdown && subMenu === dropdownItem?.subMenu && (
 				<Dropdown>
 					{subMenu.map((subItem: INavItem, i: number) => (
 						<Link href={subItem.href} key={i}>

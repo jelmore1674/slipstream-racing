@@ -1,15 +1,13 @@
-import { PDFViewer } from '@components';
 import { CDN } from '@data';
 import {
 	ButtonGrid,
-	CTAButton,
 	DownloadButton,
 	IFrame,
 	PageHeading,
 	Section,
 	VideoPlayer,
 } from 'components/Elements';
-import Link from 'next/link';
+import { PDFViewer } from 'components/Sections';
 import React from 'react';
 import { FaDownload } from 'react-icons/fa';
 

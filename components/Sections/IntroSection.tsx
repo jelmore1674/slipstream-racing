@@ -1,27 +1,21 @@
-import React from 'react';
+import { DISCORD_URL, SIMRACINGGP_URL } from '@data';
 import styled from '@emotion/styled';
-import { SiDiscord } from 'react-icons/si';
 import {
 	ButtonGrid,
+	Column,
 	CTAButton,
+	Heading,
 	Section,
 	VideoPlayer,
 } from 'components/Elements';
-import Link from 'next/link';
-import { DISCORD_URL, SIMRACINGGP_URL } from '@data';
 import { openInNewTab } from 'lib/helperFunctions';
-
-const Heading = styled.h1({
-	fontSize: '3rem',
-	fontWeight: 'bold',
-	margin: '0',
-	textAlign: 'left',
-});
+import React from 'react';
+import { SiDiscord } from 'react-icons/si';
 
 const Content = styled.p({
 	fontSize: '1rem',
-	lineHeight: '1.6rem',
 	fontWeight: 'normal',
+	lineHeight: '1.6rem',
 	margin: '1rem 0',
 	textAlign: 'left',
 	width: '600px',
@@ -29,12 +23,6 @@ const Content = styled.p({
 		maxWidth: '100%',
 		width: '100%',
 	},
-});
-
-const Column = styled.div({
-	width: '100%',
-	margin: 'auto',
-	padding: '2rem',
 });
 
 interface Props {

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { PDFViewer } from '@components';
 import { PageHeading } from 'components/Elements';
+import { PDFViewer } from 'components/Sections';
 
 const LeagueRules = () => {
 	return (

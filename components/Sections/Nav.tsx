@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { NavList } from './navList';
-import { NavLogo } from './navLogo';
+import { NavList } from '../Blocks/NavList';
+import { NavLogo } from '../Elements/NavLogo';
 import { NAV_DATA } from '@data';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import NavContext from 'context/nav-context';

@@ -11,10 +11,10 @@ export const VideoPlayer: React.FC<Props> = ({ url }) => {
 	return (
 		<ReactPlayer
 			className='react-player'
-			url={url}
 			controls={true}
-			width={'100%'}
 			height={'100%'}
+			url={url}
+			width={'100%'}
 		/>
 	);
 };

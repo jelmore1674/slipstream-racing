@@ -3,8 +3,8 @@ import React from 'react';
 const FuelCalculator = () => {
 	return (
 		<div style={{ height: '100vh' }}>
-			<h1>Test</h1>
 			<iframe
+				style={{ paddingTop: 80 }}
 				src='https://acc-fuel-calculator-f55cb.web.app/#/'
 				width='100%'
 				height='100%'

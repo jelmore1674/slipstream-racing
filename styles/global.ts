@@ -3,6 +3,10 @@ export const theme = {
 	colors: {
 		primary: '#bd3039',
 		secondary: '#f7f7f7',
+		dry: '#108820',
+		wet: '#0a64ad',
+		damp: '#8c49a4',
+		paceCar: '#b12323',
 	},
 };
 

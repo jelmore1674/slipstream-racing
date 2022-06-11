@@ -4,6 +4,7 @@ export const CTAButton = styled.button<any>((p) => {
 	const { color } = p;
 	let backgroundColor = !color ? p.theme.colors.primary : color;
 	return {
+		alignItems: 'center',
 		backgroundColor,
 		border: '3px solid transparent',
 		borderRadius: '4px',
@@ -12,10 +13,9 @@ export const CTAButton = styled.button<any>((p) => {
 		display: 'flex',
 		fontSize: '1rem',
 		fontWeight: 'bold',
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: '0.5rem 1rem',
 		gap: '0.5rem',
+		justifyContent: 'center',
+		padding: '0.5rem 1rem',
 		transition: 'all 0.3s ease-in-out',
 		'&:hover': {
 			backgroundColor: '#ffffff',
@@ -28,6 +28,7 @@ export const DownloadButton = styled.a<any>((p) => {
 	const { color } = p;
 	let backgroundColor = !color ? p.theme.colors.primary : color;
 	return {
+		alignItems: 'center',
 		backgroundColor,
 		border: '3px solid transparent',
 		borderRadius: '4px',
@@ -36,10 +37,9 @@ export const DownloadButton = styled.a<any>((p) => {
 		display: 'flex',
 		fontSize: '1rem',
 		fontWeight: 'bold',
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: '0.5rem 1rem',
 		gap: '0.5rem',
+		justifyContent: 'center',
+		padding: '0.5rem 1rem',
 		transition: 'all 0.3s ease-in-out',
 		'&:hover': {
 			backgroundColor: '#ffffff',
@@ -51,9 +51,9 @@ export const DownloadButton = styled.a<any>((p) => {
 export const ButtonGrid = styled.div<any>(({ grid }) => {
 	return {
 		display: 'grid',
+		gap: '1rem',
 		gridTemplateColumns: `repeat(auto-fit,minmax(${grid}, 1fr))`,
 		gridTemplateRows: 'auto',
-		gap: '1rem',
 		width: '100%',
 	};
 });
@@ -72,7 +72,6 @@ export const Section = styled.section((p: SectionProps) => {
 	const { grid } = p;
 	const { primary, secondary } = p.theme!.colors;
 	return {
-		justifyItems: 'center',
 		display: 'grid',
 		gap: '1rem',
 		gridTemplateColumns: `repeat(auto-fit, minmax(${
@@ -106,4 +105,56 @@ export const IFrame = styled.iframe<any>((p) => {
 		border: 'none',
 		width: '100%',
 	};
+});
+
+export const EngineMapCell = styled.div(
+	(p: { heading?: boolean; width?: string }) => {
+		const { width, heading } = p;
+		return {
+			alignItems: 'center',
+			border: '1px solid white',
+			display: 'flex',
+			fontSize: heading ? '1.5rem' : '1rem',
+			fontWeight: heading ? 'bold' : 'normal',
+			justifyContent: 'center',
+			padding: '1rem',
+			textAlign: 'center',
+			width: width,
+		};
+	}
+);
+
+export const EngineMapTableHeader = styled.h3<any>((p) => {
+	return {
+		fontSize: '1.5rem',
+		margin: '1.5rem 0',
+		textTransform: 'capitalize',
+	};
+});
+
+export const EngineMapRow = styled.div({
+	display: 'flex',
+	flexDirection: 'row',
+});
+
+export const EngineMapTable = styled.div<any>((p) => {
+	const { engineMapType } = p;
+	return {
+		backgroundColor: p.theme.colors[engineMapType],
+		borderRadius: '5px',
+		width: '100%',
+	};
+});
+
+export const Heading = styled.h1({
+	fontSize: '3rem',
+	fontWeight: 'bold',
+	margin: '0',
+	textAlign: 'left',
+});
+
+export const Column = styled.div({
+	width: '100%',
+	margin: 'auto',
+	padding: '2rem',
 });
