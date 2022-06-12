@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import Link from 'next/link';
-import { FaAngleDown } from 'react-icons/fa';
-import { useRouter } from 'next/router';
-import NavContext from 'context/nav-context';
 import { SIMRACINGGP_URL } from '@data';
-import { openInNewTab } from 'lib/helperFunctions';
+import styled from '@emotion/styled';
 import { ThemeProps } from '@types';
+import NavContext from 'context/nav-context';
+import { openInNewTab } from 'lib/helperFunctions';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
+import { FaAngleDown } from 'react-icons/fa';
 
 const NavItemWrapper = styled.a<{
 	active?: boolean;

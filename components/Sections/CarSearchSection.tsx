@@ -1,5 +1,5 @@
-import React from 'react';
 import { CarSearch, Section } from 'components/Elements';
+import React from 'react';
 
 interface Props {
 	handleInputChange: (value: string) => void;

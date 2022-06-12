@@ -1,11 +1,9 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-export const devClient = new ApolloClient({
-	uri: ' http://slipstream-wordpress.local/graphql',
-	cache: new InMemoryCache(),
-});
-
 export const client = new ApolloClient({
-	uri: 'https://slipstreamracing.net/graphql',
+	uri:
+		process.env.NODE_ENV === 'development'
+			? 'http://slipstream-wordpress.local/graphql'
+			: process.env.GRAPHQL_API,
 	cache: new InMemoryCache(),
 });

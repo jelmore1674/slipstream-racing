@@ -1,10 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
-import NavContext from 'context/nav-context';
-import { NavItem } from './NavItems';
-import { FaBars } from 'react-icons/fa';
 import { SIMRACINGGP_URL } from '@data';
+import styled from '@emotion/styled';
+import NavContext from 'context/nav-context';
+import React from 'react';
+import { NavItem } from './NavItems';
 
 const NavListWrapper = styled.div<any>((p) => {
 	const { mobile } = p;
@@ -19,6 +17,9 @@ const NavListWrapper = styled.div<any>((p) => {
 			position: mobile ? 'absolute' : 'relative',
 			top: mobile ? '80px' : '',
 			width: mobile ? '100%' : '',
+		},
+		'@media(max-width: 768px)': {
+			top: mobile ? '77px' : '',
 		},
 	};
 });

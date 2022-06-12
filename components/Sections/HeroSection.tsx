@@ -1,6 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { HeroLogo } from 'components/Elements';
+import React from 'react';
 
 const HeroWrapper = styled.div<{ src: string }>(({ src }) => ({
 	backgroundAttachment: 'fixed',

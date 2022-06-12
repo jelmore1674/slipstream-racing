@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react';
-import { EngineMapRow } from '../Blocks';
-
+import { EngineMapData } from '@types';
 import {
 	EngineMapTable,
 	EngineMapTableHeader,
 	Section,
 } from 'components/Elements';
-import { EngineMapData } from '@types';
+import React, { Fragment } from 'react';
+import { EngineMapRow } from '../Blocks';
 
 interface Props {
 	data: EngineMapData;

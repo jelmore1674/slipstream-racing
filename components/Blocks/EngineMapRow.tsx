@@ -1,8 +1,8 @@
-import React from 'react';
 import {
 	EngineMapCell,
 	EngineMapRow as EngineMapRowWrapper,
 } from 'components/Elements';
+import React from 'react';
 
 interface Props {
 	cell1: string;

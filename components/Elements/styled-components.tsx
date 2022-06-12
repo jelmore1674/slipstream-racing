@@ -154,7 +154,9 @@ export const Heading = styled.h1({
 });
 
 export const Column = styled.div({
-	width: '100%',
+	width: 'calc(100% - 2rem)',
 	margin: 'auto',
-	padding: '2rem',
+	'@media(max-width: 1220px)': {
+		width: '100%',
+	},
 });

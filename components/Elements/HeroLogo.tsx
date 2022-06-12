@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import styled from '@emotion/styled';
 import { CDN } from '@data';
+import styled from '@emotion/styled';
+import Image from 'next/image';
+import React from 'react';
 
 const LogoContainer = styled.div({
 	maxWidth: '1400px',

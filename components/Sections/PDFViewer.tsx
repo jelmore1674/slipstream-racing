@@ -1,7 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { Document, Outline, Page, pdfjs } from 'react-pdf';
 import { usePDF } from '@hooks';
+import React from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 

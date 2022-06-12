@@ -1,10 +1,10 @@
+import { NAV_DATA } from '@data';
 import styled from '@emotion/styled';
+import NavContext from 'context/nav-context';
 import React from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavList } from '../Blocks/NavList';
 import { NavLogo } from '../Elements/NavLogo';
-import { NAV_DATA } from '@data';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import NavContext from 'context/nav-context';
 
 const NavWrapper = styled.nav((p: any) => {
 	return {
