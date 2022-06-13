@@ -22,7 +22,7 @@ const filterCars = (value) => {
 const loadOptions = (inputValue, callback) => {
 	setTimeout(() => {
 		callback(filterCars(inputValue));
-	}, 1000);
+	}, 500);
 };
 
 interface Props {
