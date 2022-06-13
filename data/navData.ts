@@ -12,11 +12,14 @@ export const NAV_DATA = {
 		},
 		{
 			name: 'Driver Resources',
-			href: '/driver-resources',
 			subMenu: [
 				{
 					name: 'ACC Custom Liveries',
 					href: '/driver-resources/acc-liveries',
+				},
+				{
+					name: 'ACC Engine Map Guide',
+					href: '/driver-resources/assetto-corsa-competizione-engine-map-guide',
 				},
 				{
 					name: 'Fuel Calculator',

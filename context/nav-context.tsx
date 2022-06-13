@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 
 interface NavItem {
 	name: string;
-	href: string;
+	href?: string;
 	subMenu?: NavItem[];
 }
 

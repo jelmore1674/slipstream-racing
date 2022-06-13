@@ -1,6 +1,7 @@
+import { PageHeading } from 'components/Elements';
 import { CarSearchSection, EngineMapTableSection } from 'components/Sections';
 import { engineMapData } from 'data/engineMapData';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { EngineMapData } from 'types';
 
 const filterCars = (value) => {
@@ -38,7 +39,8 @@ const ACCEngineMapGuide = ({ data }: Props) => {
 		return inputValue;
 	};
 	return (
-		<div style={{ paddingTop: 100 }}>
+		<Fragment>
+			<PageHeading>ACC Engine Map Guide</PageHeading>
 			<CarSearchSection
 				handleInputChange={handleInputChange}
 				loadOptions={loadOptions}
@@ -53,7 +55,7 @@ const ACCEngineMapGuide = ({ data }: Props) => {
 				.map((item: any, i: number) => {
 					return <EngineMapTableSection key={i} data={item} />;
 				})}
-		</div>
+		</Fragment>
 	);
 };
 

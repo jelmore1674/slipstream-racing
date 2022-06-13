@@ -14,10 +14,8 @@ export const Footer = () => {
 	return (
 		<FooterWrapper>
 			<p>
-				Made with{' '}
-				<span role='img' aria-label='love'>
-					❤️
-				</span>
+				2022 Slipstream Racing
+				<sup style={{ fontSize: '0.5rem' }}>TM</sup>
 			</p>
 		</FooterWrapper>
 	);

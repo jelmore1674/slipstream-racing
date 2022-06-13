@@ -6,13 +6,35 @@
 // } from 'next';
 // import { gql } from '@apollo/client';
 // import { client } from '../../lib/apollo';
+// import { CDN } from '@data';
+// import Image from 'next/image';
+// import { Column, Section, VideoPlayer } from 'components/Elements';
 
 const Post = () => {
-	// const { title, content } = data;
+	// const { title, track, content, slug } = data;
+	// const { trackLength, trackGuideVideo, trackCorners } = track;
+	// console.log(data);
 	return (
 		<div>
 			<h1>Test</h1>
-			{/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
+			{/* <Section grid='600'>
+				<Column>
+					<div>
+						<Image
+							src={`${CDN}/track/${slug}/trackmap.png`}
+							alt={slug}
+							width={355}
+							height={265}
+							layout='responsive'
+						/>
+					</div>
+				</Column>
+				<Column></Column>
+			</Section>
+			<Section>
+				<VideoPlayer url={trackGuideVideo} />
+			</Section>
+			<div dangerouslySetInnerHTML={{ __html: content }} /> */}
 		</div>
 	);
 };
@@ -68,7 +90,7 @@ export default Post;
 // 	});
 // 	return {
 // 		props: {
-// 			data: result.data.post,
+// 			data: { ...result.data.post, slug },
 // 		},
 // 	};
 // };

@@ -6,26 +6,25 @@ import React from 'react';
 const LogoContainer = styled.div({
 	maxWidth: '1400px',
 	width: '100%',
+	height: '100%',
 	position: 'relative',
 	margin: 'auto',
 });
 
 const Logo = styled.div({
 	position: 'absolute',
-	top: '10px',
+	top: '-70px',
 	right: '2rem',
 	'@media (min-width: 1460px)': {
 		right: '-2rem',
 	},
 	'@media (max-width: 768px)': {
-		padding: '3rem',
 		position: 'static',
-	},
-	'@media (max-width: 480px)': {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+	'@media (max-width: 480px)': {},
 });
 
 const logoPath = `${CDN}/home/logo.png`;

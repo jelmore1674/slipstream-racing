@@ -34,7 +34,7 @@ const NavItemsWrapper = styled.div({
 
 interface INavItem {
 	name: string;
-	href: string;
+	href?: string;
 	subMenu?: INavItem[];
 }
 

@@ -94,7 +94,6 @@ export const PageHeading = styled.h1((p) => {
 		fontWeight: 'bold',
 		margin: '0',
 		padding: '1rem 0',
-		paddingTop: 100,
 		textAlign: 'center',
 	};
 });
@@ -155,7 +154,6 @@ export const Heading = styled.h1({
 
 export const Column = styled.div({
 	width: 'calc(100% - 2rem)',
-	margin: 'auto',
 	'@media(max-width: 1220px)': {
 		width: '100%',
 	},

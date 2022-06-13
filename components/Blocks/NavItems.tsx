@@ -96,12 +96,12 @@ const DropdownItem = styled.a<{ theme?: ThemeProps }>((p) => {
 
 interface INavItem {
 	name: string;
-	href: string;
+	href?: string;
 	subMenu?: INavItem[];
 }
 
 interface Props {
-	href: string;
+	href?: string;
 	name: string;
 	subMenu?: INavItem[];
 	signUp?: boolean;
@@ -121,7 +121,21 @@ export const NavItem = ({ href, subMenu, name, signUp }: Props) => {
 
 	return (
 		<>
-			<Link href={href}>
+			{href ? (
+				<Link href={href}>
+					<NavItemWrapper
+						onClick={handleSignUp}
+						active={
+							href === router.pathname ||
+							subMenu?.some(
+								(item) => item.href === router.pathname
+							)
+						}
+						signUp={signUp}>
+						{name} {subMenu && <FaAngleDown />}
+					</NavItemWrapper>
+				</Link>
+			) : (
 				<NavItemWrapper
 					onClick={handleSignUp}
 					active={
@@ -131,7 +145,7 @@ export const NavItem = ({ href, subMenu, name, signUp }: Props) => {
 					signUp={signUp}>
 					{name} {subMenu && <FaAngleDown />}
 				</NavItemWrapper>
-			</Link>
+			)}
 			{dropdown && subMenu === dropdownItem?.subMenu && (
 				<Dropdown>
 					{subMenu.map((subItem: INavItem, i: number) => (

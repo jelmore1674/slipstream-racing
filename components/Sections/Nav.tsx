@@ -5,17 +5,23 @@ import React from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavList } from '../Blocks/NavList';
 import { NavLogo } from '../Elements/NavLogo';
+import { useScroll } from '@hooks';
 
 const NavWrapper = styled.nav((p: any) => {
+	const { show } = p;
 	return {
 		backgroundColor: p.theme.colors.primary,
 		display: 'flex',
 		justifyContent: 'center',
 		padding: '0.5rem 2rem',
-		position: 'fixed',
+		position: 'sticky',
 		top: 0,
+		transition: 'transform 360ms linear',
 		width: '100vw',
 		zIndex: '100',
+		'@media(max-width: 1220px)': {
+			transform: `translate(0, ${show ? '0' : '-90'}px)`,
+		},
 	};
 });
 
@@ -36,9 +42,10 @@ const IconWrapper = styled.div({
 export const Nav = () => {
 	const { navItems, src } = NAV_DATA;
 	const { mobileDropdown, setMobileDropdown } = React.useContext(NavContext);
+	const showScroll = useScroll();
 
 	return (
-		<NavWrapper>
+		<NavWrapper show={showScroll}>
 			<NavContainer>
 				<NavLogo src={src} />
 				<IconWrapper>

@@ -13,7 +13,7 @@ const HeroWrapper = styled.div<{ src: string }>(({ src }) => ({
 	'@media (max-width: 768px)': {
 		backgroundAttachment: 'scroll',
 		height: '100%',
-		paddingTop: 80,
+		padding: '0 1rem',
 	},
 }));
 

@@ -22,14 +22,36 @@ const PDFContainer = styled.div({
 });
 
 const PDFControlsWrapper = styled.div({
-	color: 'green',
-	display: 'flex',
-	justifyContent: 'center',
 	alignItems: 'center',
 	bottom: 20,
+	color: '#333',
+	display: 'flex',
+	gap: '3.5rem',
+	justifyContent: 'center',
 	position: 'absolute',
 	width: '100%',
-	gap: '3.5rem',
+});
+
+const PDFControl = styled.div<{ disabled: boolean }>(({ disabled }) => {
+	return {
+		alignItems: 'center',
+		backgroundColor: '#ccc',
+		border: '1px solid black',
+		borderRadius: '4px',
+		cursor: 'pointer',
+		display: 'flex',
+		fontWeight: 'bold',
+		height: '48px',
+		justifyContent: 'center',
+		letterSpacing: '0.05rem',
+		transition: 'all 0.3s ease-in-out',
+		width: '100px',
+		'&:hover': {
+			backgroundColor: '#eee',
+			color: '#000',
+			cursor: disabled ? 'not-allowed' : 'pointer',
+		},
+	};
 });
 
 interface Props {
@@ -54,11 +76,19 @@ export const PDFViewer = ({ pdf, singlePage }: Props) => {
 						<PDFContainer>
 							<Page pageNumber={pageNumber} />
 							<PDFControlsWrapper>
-								<div onClick={previousPage}>Prev</div>
+								<PDFControl
+									onClick={previousPage}
+									disabled={pageNumber === 1}>
+									Prev
+								</PDFControl>
 								<div>
 									Page {pageNumber} of {numPages}
 								</div>
-								<div onClick={nextPage}>Next</div>
+								<PDFControl
+									onClick={nextPage}
+									disabled={pageNumber === numPages}>
+									Next
+								</PDFControl>
 							</PDFControlsWrapper>
 						</PDFContainer>
 					</>
