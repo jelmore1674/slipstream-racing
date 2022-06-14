@@ -20,7 +20,7 @@ export const EngineMapTableSection = ({ data }: Props): JSX.Element => {
 				return (
 					<Fragment key={i}>
 						<EngineMapTableHeader>
-							{condition.replace(/([A-Z])/g, '$1')}
+							{condition.replace(/([A-Z])/g, ' $1')}
 						</EngineMapTableHeader>
 						<EngineMapTable engineMapType={condition}>
 							<EngineMapRow

@@ -7,7 +7,7 @@ const seoData = {
 	url: 'https://slipstreamracing.net/driver-resources/fuel-calculator',
 	title: 'Fuel Calculator | Slipstream Racing',
 	description:
-		'Need help planning your race strategy. Check out the Fuel Calculator create by Intuition Labs Development!',
+		'Need help planning your race strategy. Check out the Fuel Calculator created by Intuition Labs Development!',
 };
 
 interface Props {

@@ -30,7 +30,7 @@ const seoData = {
 	url: 'https://slipstreamracing.net/driver-resources/assetto-corsa-competizione-engine-map-guide',
 	title: 'ACC Engine Map Guide | Slipstream Racing',
 	description:
-		'Trying to find the best engine for your car in ACC? Check out our ACC Engine Map Guide!',
+		'Trying to find the best engine map for your car in ACC? Check out our ACC Engine Map Guide!',
 };
 interface Props {
 	data: EngineMapData[];
