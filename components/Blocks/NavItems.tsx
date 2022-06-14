@@ -153,8 +153,8 @@ export const NavItem = ({
 			)}
 			{dropdown && subMenu === dropdownItem?.subMenu && (
 				<Dropdown>
-					{subMenu.map((subItem: INavItem, i: number) => (
-						<Link href={subItem.href} key={i}>
+					{subMenu!.map((subItem: INavItem, i: number) => (
+						<Link href={subItem.href!} key={i}>
 							<DropdownItem>{subItem.name}</DropdownItem>
 						</Link>
 					))}
@@ -163,7 +163,7 @@ export const NavItem = ({
 			{subMenu && (
 				<Dropdown mobile>
 					{subMenu.map((subItem: INavItem, i: number) => (
-						<Link href={subItem.href} key={i}>
+						<Link href={subItem.href!} key={i}>
 							<DropdownItem
 								onClick={() => setMobileDropdown(false)}>
 								{subItem.name}
