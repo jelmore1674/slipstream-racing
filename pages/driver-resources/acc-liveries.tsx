@@ -8,14 +8,41 @@ import {
 	VideoPlayer,
 } from 'components/Elements';
 import { PDFViewer } from 'components/Sections';
-import React from 'react';
+import Head from 'next/head';
+import React, { Fragment } from 'react';
 import { FaDownload } from 'react-icons/fa';
+import type { NextPage } from 'next';
+import { SeoData } from '@types';
 
 const imgPath = `${CDN}/driver-resources/acc-liveries`;
 
-const AccLiveries = () => {
+const seoData = {
+	url: 'https://slipstreamracing.net/driver-resources/acc-liveries',
+	title: 'ACC Custom Liveries | Slipstream Racing',
+	description:
+		'Upload your own custom liveries and allow your fellow racers to check out your kick-ass livery',
+};
+
+interface Props {
+	seoData: SeoData;
+}
+
+const AccLiveries: NextPage<Props> = ({ seoData }) => {
+	const { url, title, description } = seoData;
 	return (
-		<div>
+		<Fragment>
+			<Head>
+				<title>{title}</title>
+				<meta property='og:title' content={title} key='ogtitle' />
+				<meta property='og:url' content={url} key='ogurl' />
+				<meta name='description' content={description} />
+				<meta property='og:title' content={title} key='ogtitle' />
+				<meta
+					property='og:description'
+					content={description}
+					key='ogdesc'
+				/>
+			</Head>
 			<PageHeading>ACC Custom Liveries</PageHeading>
 			<Section grid='1200'>
 				<h2>Uploading Custom Liveries</h2>
@@ -85,8 +112,14 @@ const AccLiveries = () => {
 					</DownloadButton>
 				</ButtonGrid>
 			</Section>
-		</div>
+		</Fragment>
 	);
 };
 
 export default AccLiveries;
+
+export const getStaticProps = async () => {
+	return {
+		props: { seoData },
+	};
+};

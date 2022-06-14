@@ -11,7 +11,7 @@ interface Props {
 	data: EngineMapData;
 }
 
-export const EngineMapTableSection = ({ data }: Props) => {
+export const EngineMapTableSection = ({ data }: Props): JSX.Element => {
 	const { carName, engineMaps } = data;
 	return (
 		<Section grid='1200'>

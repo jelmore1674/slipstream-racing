@@ -38,11 +38,12 @@ export const IntroSection = ({ copy, youtubeLink }: Props): JSX.Element => {
 				<Content dangerouslySetInnerHTML={{ __html: copy }} />
 				<ButtonGrid grid={'100px'}>
 					<CTAButton
-						color='#5865F2'
-						onClick={() => openInNewTab(DISCORD_URL)}>
+						href={DISCORD_URL}
+						target={'_blank'}
+						color='#5865F2'>
 						Discord <SiDiscord />
 					</CTAButton>
-					<CTAButton onClick={() => openInNewTab(SIMRACINGGP_URL)}>
+					<CTAButton href={SIMRACINGGP_URL} target={'_blank'}>
 						Sign Up
 					</CTAButton>
 				</ButtonGrid>

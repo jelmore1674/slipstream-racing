@@ -25,3 +25,10 @@ export interface ThemeProps {
 		paceCar?: string;
 	};
 }
+
+export interface SeoData {
+	title: string;
+	description: string;
+	url: string;
+	featuredImg?: string;
+}

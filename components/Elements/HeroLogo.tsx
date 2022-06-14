@@ -29,7 +29,7 @@ const Logo = styled.div({
 
 const logoPath = `${CDN}/home/logo.png`;
 
-export const HeroLogo = () => {
+export const HeroLogo = (): JSX.Element => {
 	return (
 		<LogoContainer>
 			<Logo>

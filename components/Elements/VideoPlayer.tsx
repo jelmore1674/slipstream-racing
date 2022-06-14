@@ -7,7 +7,7 @@ interface Props {
 	url: string;
 }
 
-export const VideoPlayer: React.FC<Props> = ({ url }) => {
+export const VideoPlayer = ({ url }: Props): JSX.Element => {
 	return (
 		<ReactPlayer
 			className='react-player'

@@ -69,7 +69,7 @@ export const CarSearch = ({
 	handleInputChange,
 	loadOptions,
 	setState,
-}: Props) => {
+}: Props): JSX.Element => {
 	return (
 		<>
 			<AsyncSelect

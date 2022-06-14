@@ -12,7 +12,7 @@ interface Props {
 	src: string;
 }
 
-export const NavLogo = ({ src }: Props) => {
+export const NavLogo = ({ src }: Props): JSX.Element => {
 	return (
 		<Link href='/'>
 			<NavLogoWrapper>

@@ -107,7 +107,12 @@ interface Props {
 	signUp?: boolean;
 }
 
-export const NavItem = ({ href, subMenu, name, signUp }: Props) => {
+export const NavItem = ({
+	href,
+	subMenu,
+	name,
+	signUp,
+}: Props): JSX.Element => {
 	const { dropdown, dropdownItem, setMobileDropdown } =
 		React.useContext(NavContext);
 	const router = useRouter();

@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 							content={`https://slipstreamracing.net`}
 							key='ogurl'
 						/>
-						<meta property='og:type' content='article' />
+						<meta property='og:type' content='website' />
 						<meta
 							property='og:image'
 							content={`${CDN}/home/logo.png`}
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 						/>
 						<meta
 							property='og:title'
-							content={'Slipstream Racing'}
+							content='Slipstream Racing'
 							key='ogtitle'
 						/>
 						<meta

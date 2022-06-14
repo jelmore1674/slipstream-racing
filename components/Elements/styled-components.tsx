@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
+import { ThemeProps } from '../../types';
 
-export const CTAButton = styled.button<any>((p) => {
+export const CTAButton = styled.a<{
+	color?: string;
+	theme?: ThemeProps;
+}>((p) => {
 	const { color } = p;
 	let backgroundColor = !color ? p.theme.colors.primary : color;
 	return {
@@ -24,7 +28,10 @@ export const CTAButton = styled.button<any>((p) => {
 	};
 });
 
-export const DownloadButton = styled.a<any>((p) => {
+export const DownloadButton = styled.a<{
+	color?: string;
+	theme?: ThemeProps;
+}>((p) => {
 	const { color } = p;
 	let backgroundColor = !color ? p.theme.colors.primary : color;
 	return {
@@ -48,7 +55,7 @@ export const DownloadButton = styled.a<any>((p) => {
 	};
 });
 
-export const ButtonGrid = styled.div<any>(({ grid }) => {
+export const ButtonGrid = styled.div<{ grid: string | number }>(({ grid }) => {
 	return {
 		display: 'grid',
 		gap: '1rem',
@@ -59,12 +66,7 @@ export const ButtonGrid = styled.div<any>(({ grid }) => {
 });
 
 interface SectionProps {
-	theme?: {
-		colors: {
-			primary: string;
-			secondary: string;
-		};
-	};
+	theme?: ThemeProps;
 	grid?: string;
 }
 
@@ -88,22 +90,18 @@ export const Section = styled.section((p: SectionProps) => {
 	};
 });
 
-export const PageHeading = styled.h1((p) => {
-	return {
-		fontSize: '3rem',
-		fontWeight: 'bold',
-		margin: '0',
-		padding: '1rem 0',
-		textAlign: 'center',
-	};
+export const PageHeading = styled.h1({
+	fontSize: '3rem',
+	fontWeight: 'bold',
+	margin: '0',
+	padding: '1rem 0',
+	textAlign: 'center',
 });
 
-export const IFrame = styled.iframe<any>((p) => {
-	return {
-		backgroundColor: '#ffffff',
-		border: 'none',
-		width: '100%',
-	};
+export const IFrame = styled.iframe({
+	backgroundColor: '#ffffff',
+	border: 'none',
+	width: '100%',
 });
 
 export const EngineMapCell = styled.div(
@@ -123,12 +121,10 @@ export const EngineMapCell = styled.div(
 	}
 );
 
-export const EngineMapTableHeader = styled.h3<any>((p) => {
-	return {
-		fontSize: '1.5rem',
-		margin: '1.5rem 0',
-		textTransform: 'capitalize',
-	};
+export const EngineMapTableHeader = styled.h3({
+	fontSize: '1.5rem',
+	margin: '1.5rem 0',
+	textTransform: 'capitalize',
 });
 
 export const EngineMapRow = styled.div({
@@ -136,7 +132,10 @@ export const EngineMapRow = styled.div({
 	flexDirection: 'row',
 });
 
-export const EngineMapTable = styled.div<any>((p) => {
+export const EngineMapTable = styled.div<{
+	engineMapType: string;
+	theme?: ThemeProps;
+}>((p) => {
 	const { engineMapType } = p;
 	return {
 		backgroundColor: p.theme.colors[engineMapType],

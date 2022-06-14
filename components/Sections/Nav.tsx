@@ -6,8 +6,9 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavList } from '../Blocks/NavList';
 import { NavLogo } from '../Elements/NavLogo';
 import { useScroll } from '@hooks';
+import { ThemeProps } from '@types';
 
-const NavWrapper = styled.nav((p: any) => {
+const NavWrapper = styled.nav<{ theme?: ThemeProps; show?: boolean }>((p) => {
 	const { show } = p;
 	return {
 		backgroundColor: p.theme.colors.primary,

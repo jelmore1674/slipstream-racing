@@ -11,7 +11,7 @@ export const CarSearchSection = ({
 	handleInputChange,
 	loadOptions,
 	setFilterValue,
-}: Props) => {
+}: Props): JSX.Element => {
 	return (
 		<Section>
 			<CarSearch

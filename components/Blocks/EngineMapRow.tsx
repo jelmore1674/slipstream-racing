@@ -10,7 +10,7 @@ interface Props {
 	heading?: boolean;
 }
 
-export const EngineMapRow = ({ cell1, cell2, heading }: Props) => {
+export const EngineMapRow = ({ cell1, cell2, heading }: Props): JSX.Element => {
 	return (
 		<EngineMapRowWrapper>
 			<EngineMapCell width='25%' heading={heading}>
