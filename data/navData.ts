@@ -19,7 +19,7 @@ export const NAV_DATA = {
 				},
 				{
 					name: 'ACC Engine Map Guide',
-					href: '/driver-resources/assetto-corsa-competizione-engine-map-guide',
+					href: '/assetto-corsa-competizione-engine-map-guide',
 				},
 				{
 					name: 'Fuel Calculator',
