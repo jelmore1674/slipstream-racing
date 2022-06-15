@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { Layout } from '../layouts/layout';
 import { client } from '../lib/apollo';
 import { globalStyles, theme } from '../styles/global';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -71,6 +72,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Layout>
 						<Component {...pageProps} />
 					</Layout>
+					<Script
+						strategy='lazyOnload'
+						src='https://www.googletagmanager.com/gtag/js?id=G-FVVD7T5LYY'
+					/>
+					<Script id='google-analytics' strategy='lazyOnload'>
+						{`window.dataLayer = window.dataLayer || [];
+  						function gtag(){dataLayer.push(arguments);}
+  						gtag('js', new Date());
+  						gtag('config', 'G-FVVD7T5LYY');`}
+					</Script>
 				</NavContextProvider>
 			</ThemeProvider>
 		</ApolloProvider>
