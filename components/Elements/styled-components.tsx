@@ -157,3 +157,7 @@ export const Column = styled.div({
 		width: '100%',
 	},
 });
+
+export const EngineMapCarTitle = styled.h2({
+	fontSize: '2rem',
+});

@@ -1,5 +1,6 @@
 import { EngineMapData } from '@types';
 import {
+	EngineMapCarTitle,
 	EngineMapTable,
 	EngineMapTableHeader,
 	Section,
@@ -15,7 +16,7 @@ export const EngineMapTableSection = ({ data }: Props): JSX.Element => {
 	const { carName, engineMaps } = data;
 	return (
 		<Section grid='1200'>
-			<h2>{carName}</h2>
+			<EngineMapCarTitle>{carName}</EngineMapCarTitle>
 			{Object.keys(engineMaps).map((condition: string, i: number) => {
 				return (
 					<Fragment key={i}>

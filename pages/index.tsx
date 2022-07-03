@@ -9,14 +9,11 @@ import { client } from '../lib/apollo';
 const imgPath = `${CDN}/home`;
 
 interface Props {
-	data: {
-		copy: string;
-		youtubeLink: string;
-	};
+	copy: string;
+	youtubeLink: string;
 }
 
-const Home: NextPage<Props> = ({ data }) => {
-	const { copy, youtubeLink } = data;
+const Home: NextPage<Props> = ({ copy, youtubeLink }) => {
 	return (
 		<Fragment>
 			<Head>
@@ -52,7 +49,8 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			data: results.data.page.homePage,
+			copy: results.data.page.homePage.copy,
+			youtubeLink: results.data.page.homePage.youtubeLink,
 		},
 	};
 }

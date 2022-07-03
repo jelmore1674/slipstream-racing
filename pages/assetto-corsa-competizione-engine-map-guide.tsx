@@ -38,7 +38,7 @@ interface Props {
 }
 
 const ACCEngineMapGuide = ({ data, seoData }: Props) => {
-	const [value, setValue] = React.useState('');
+	const [, setValue] = React.useState('');
 	const [filterValue, setFilterValue] = React.useState('');
 
 	const { url, title, description } = seoData;

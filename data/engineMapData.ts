@@ -50,7 +50,7 @@ export const engineMapData = [
 		},
 	},
 	{
-		carName: 'Audi R8 GT3 & Audi R8 GT3 EVO',
+		carName: 'Audi R8 GT3 & Audi R8 GT3 EVO & Audi R8 LMS GT3 Evo 2',
 		engineMaps: {
 			dry: [
 				{
@@ -132,7 +132,7 @@ export const engineMapData = [
 		},
 	},
 	{
-		carName: 'BMW M6',
+		carName: 'BMW M6 & BMW M4 GT3',
 		engineMaps: {
 			dry: [
 				{
