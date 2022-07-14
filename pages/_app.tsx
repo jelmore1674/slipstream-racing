@@ -72,16 +72,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<Layout>
 						<Component {...pageProps} />
 					</Layout>
-					<Script
-						strategy='lazyOnload'
-						src='https://www.googletagmanager.com/gtag/js?id=G-FVVD7T5LYY'
-					/>
-					<Script id='google-analytics' strategy='lazyOnload'>
-						{`window.dataLayer = window.dataLayer || [];
+					{process.env.NODE_ENV === 'production' && (
+						<>
+							<Script
+								strategy='lazyOnload'
+								src='https://www.googletagmanager.com/gtag/js?id=G-FVVD7T5LYY'
+							/>
+							<Script id='google-analytics' strategy='lazyOnload'>
+								{`window.dataLayer = window.dataLayer || [];
   						function gtag(){dataLayer.push(arguments);}
   						gtag('js', new Date());
   						gtag('config', 'G-FVVD7T5LYY');`}
-					</Script>
+							</Script>
+						</>
+					)}
 				</NavContextProvider>
 			</ThemeProvider>
 		</ApolloProvider>
