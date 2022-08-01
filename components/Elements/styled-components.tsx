@@ -68,12 +68,17 @@ export const ButtonGrid = styled.div<{ grid: string | number }>(({ grid }) => {
 interface SectionProps {
 	theme?: ThemeProps;
 	grid?: string;
+	backgroundColor?: string;
+	color?: string;
 }
 
 export const Section = styled.section((p: SectionProps) => {
-	const { grid } = p;
+	const { grid, backgroundColor, color } = p;
 	const { primary, secondary } = p.theme!.colors;
+
 	return {
+		backgroundColor,
+		color,
 		display: 'grid',
 		gap: '1rem',
 		gridTemplateColumns: `repeat(auto-fit, minmax(${

@@ -1,4 +1,5 @@
-import { PageHeading } from 'components/Elements';
+import { SIMRACINGGP_URL } from '@data';
+import { CTAButton, PageHeading, Section } from 'components/Elements';
 import { CarSearchSection, EngineMapTableSection } from 'components/Sections';
 import { engineMapData } from 'data/engineMapData';
 import Head from 'next/head';
@@ -68,6 +69,30 @@ const ACCEngineMapGuide = ({ data, seoData }: Props) => {
 				loadOptions={loadOptions}
 				setFilterValue={setFilterValue}
 			/>
+			<Section backgroundColor='#aaa' style={{ borderRadius: '4px' }}>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '1rem',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}>
+					<div style={{ fontSize: '32px', fontWeight: 'bold' }}>
+						Looking for a league on ACC? Come join us on Saturdays
+						at 6:30pm EST/ 23:30 UTC
+					</div>
+					<div style={{ fontSize: '32px', fontWeight: 'bold' }}>
+						Sign Up on SimRacing.GP Today!
+					</div>
+					<CTAButton
+						href={SIMRACINGGP_URL}
+						target='_blank'
+						style={{ width: '100%' }}>
+						Sign Up
+					</CTAButton>
+				</div>
+			</Section>
 			{data
 				.filter((item) => {
 					return item.carName
