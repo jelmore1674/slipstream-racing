@@ -11,5 +11,10 @@
 	],
 	"devDependencies": {
 		"turbo": "^1.4.3"
+	},
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev --parallel",
+		"lint": "turbo run lint"
 	}
 }
