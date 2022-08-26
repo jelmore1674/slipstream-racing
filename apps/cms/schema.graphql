@@ -56,7 +56,13 @@ input StringFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
 }
 
 input NestedStringFilter {
@@ -171,6 +177,7 @@ input StringNullableFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringNullableFilter
 }
 
@@ -303,6 +310,48 @@ input TagCreateInput {
   posts: PostRelateToManyForCreateInput
 }
 
+type HomePage {
+  id: ID!
+  copy: HomePage_copy_Document
+  youtubeUrl: String
+}
+
+type HomePage_copy_Document {
+  document(hydrateRelationships: Boolean! = false): JSON!
+}
+
+input HomePageWhereUniqueInput {
+  id: ID
+}
+
+input HomePageWhereInput {
+  AND: [HomePageWhereInput!]
+  OR: [HomePageWhereInput!]
+  NOT: [HomePageWhereInput!]
+  id: IDFilter
+  youtubeUrl: StringFilter
+}
+
+input HomePageOrderByInput {
+  id: OrderDirection
+  youtubeUrl: OrderDirection
+}
+
+input HomePageUpdateInput {
+  copy: JSON
+  youtubeUrl: String
+}
+
+input HomePageUpdateArgs {
+  where: HomePageWhereUniqueInput!
+  data: HomePageUpdateInput!
+}
+
+input HomePageCreateInput {
+  copy: JSON
+  youtubeUrl: String
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -330,6 +379,15 @@ type Mutation {
   updateTags(data: [TagUpdateArgs!]!): [Tag]
   deleteTag(where: TagWhereUniqueInput!): Tag
   deleteTags(where: [TagWhereUniqueInput!]!): [Tag]
+  createHomePage(data: HomePageCreateInput!): HomePage
+  createHomePages(data: [HomePageCreateInput!]!): [HomePage]
+  updateHomePage(
+    where: HomePageWhereUniqueInput!
+    data: HomePageUpdateInput!
+  ): HomePage
+  updateHomePages(data: [HomePageUpdateArgs!]!): [HomePage]
+  deleteHomePage(where: HomePageWhereUniqueInput!): HomePage
+  deleteHomePages(where: [HomePageWhereUniqueInput!]!): [HomePage]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -384,6 +442,14 @@ type Query {
   ): [Tag!]
   tag(where: TagWhereUniqueInput!): Tag
   tagsCount(where: TagWhereInput! = {}): Int
+  homePages(
+    where: HomePageWhereInput! = {}
+    orderBy: [HomePageOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [HomePage!]
+  homePage(where: HomePageWhereUniqueInput!): HomePage
+  homePagesCount(where: HomePageWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
@@ -461,11 +527,6 @@ enum KeystoneAdminUIFieldMetaItemViewFieldMode {
   edit
   read
   hidden
-}
-
-enum QueryMode {
-  default
-  insensitive
 }
 
 type KeystoneAdminUISort {

@@ -1,11 +1,11 @@
 import { PageHeading } from 'components/Elements';
 import { PDFViewer } from 'components/Sections';
 import Head from 'next/head';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const LeagueRules = () => {
 	return (
-		<Fragment>
+		<>
 			<Head>
 				<title>League Rules | Slipstream Racing</title>
 				<meta
@@ -16,7 +16,7 @@ const LeagueRules = () => {
 			</Head>
 			<PageHeading>League Rules</PageHeading>
 			<PDFViewer pdf='/assets/rules.pdf' />
-		</Fragment>
+		</>
 	);
 };
 

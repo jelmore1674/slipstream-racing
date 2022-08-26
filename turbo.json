@@ -6,12 +6,13 @@
 			"outputs": [".next/**"]
 		},
 		"dev": {
-			"dependsOn": [],
+			"dependsOn": ["$DATABASE_URL"],
 			"outputs": [],
 			"inputs": ["src/**/*.tsx", "src/**/*.ts"]
 		},
 		"lint": {
 			"outputs": []
 		}
-	}
+	},
+	"globalDependencies": [".env"]
 }

@@ -14,13 +14,17 @@ import { lists } from './schema';
 // Keystone auth is configured separately - check out the basic auth setup we are importing from our auth file.
 import { withAuth, session } from './auth';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 export default withAuth(
 	// Using the config function helps typescript guide you to the available options.
 	config({
 		// the db sets the database provider - we're using sqlite for the fastest startup experience
 		db: {
-			provider: 'sqlite',
-			url: 'file:./keystone.db',
+			provider: 'postgresql',
+			url: process.env.DATABASE_URL as string,
 		},
 		server: {
 			port: 3005,
