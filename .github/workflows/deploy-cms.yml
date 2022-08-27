@@ -2,7 +2,7 @@ name: Deploy cms
 
 on:
     workflow_run:
-        workflows: ['Lint cms']
+        workflows: ['Build cms']
         branches: [main]
         types:
             - completed
