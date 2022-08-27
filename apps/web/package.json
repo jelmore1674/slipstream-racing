@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "env-cmd -f ../../.env next dev",
-		"build": "env-cmd -f ../../.env next build",
+		"build": "next build",
+		"build:local": "env-cmd -f ../../.env next build",
 		"postbuild": "next-sitemap",
 		"start": "next start",
 		"lint": "next lint"

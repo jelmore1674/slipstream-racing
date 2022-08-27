@@ -21,5 +21,5 @@ jobs:
             - run: |
                   touch .env                  
                   echo "${{secrets.LINT_ENV_FILE}}" >> .env
-            - run: yarn build --filter=web...
             - run: yarn lint --filter=web...
+            - run: yarn web build:local
