@@ -1,5 +1,4 @@
 import { DISCORD_URL, SIMRACINGGP_URL } from '@data';
-import styled from '@emotion/styled';
 import {
 	ButtonGrid,
 	Column,
@@ -8,22 +7,10 @@ import {
 	Section,
 	VideoPlayer,
 } from 'components/Elements';
-import { openInNewTab } from 'lib/helperFunctions';
 import React from 'react';
 import { SiDiscord } from 'react-icons/si';
-
-const Content = styled.p({
-	fontSize: '1rem',
-	fontWeight: 'normal',
-	lineHeight: '1.6rem',
-	margin: '1rem 0',
-	textAlign: 'left',
-	width: '600px',
-	'@media(max-width: 1220px)': {
-		maxWidth: '100%',
-		width: '100%',
-	},
-});
+import { theme } from 'styles/global';
+import { CmsRenderer } from './CmsRenderer';
 
 interface Props {
 	copy: string;
@@ -35,12 +22,12 @@ export const IntroSection = ({ copy, youtubeLink }: Props): JSX.Element => {
 		<Section>
 			<Column>
 				<Heading>Slipstream Racing</Heading>
-				<Content dangerouslySetInnerHTML={{ __html: copy }} />
+				<CmsRenderer document={copy} />
 				<ButtonGrid grid={'100px'}>
 					<CTAButton
 						href={DISCORD_URL}
 						target={'_blank'}
-						color='#5865F2'>
+						color={theme.colors.discord}>
 						Discord <SiDiscord />
 					</CTAButton>
 					<CTAButton href={SIMRACINGGP_URL} target={'_blank'}>

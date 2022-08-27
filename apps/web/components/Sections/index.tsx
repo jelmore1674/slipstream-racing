@@ -1,4 +1,5 @@
 export * from './CarSearchSection';
+export * from './CmsRenderer';
 export * from './EngineMapTableSection';
 export * from './Footer';
 export * from './HeroSection';

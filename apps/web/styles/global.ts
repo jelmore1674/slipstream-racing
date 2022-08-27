@@ -7,6 +7,7 @@ export const theme = {
 		wet: '#0a64ad',
 		damp: '#8c49a4',
 		paceCar: '#b12323',
+		discord: '#5865F2',
 	},
 };
 
