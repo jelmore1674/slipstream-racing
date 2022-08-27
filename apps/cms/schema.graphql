@@ -4,6 +4,7 @@
 type User {
   id: ID!
   name: String
+  avatar: S3ImageFieldOutput
   email: String
   password: PasswordState
   posts(
@@ -13,6 +14,23 @@ type User {
     skip: Int! = 0
   ): [Post!]
   postsCount(where: PostWhereInput! = {}): Int
+}
+
+interface S3ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: S3ImageExtension!
+  ref: String!
+  url: String!
+}
+
+enum S3ImageExtension {
+  jpg
+  png
+  webp
+  gif
 }
 
 type PasswordState {
@@ -98,10 +116,21 @@ enum OrderDirection {
 
 input UserUpdateInput {
   name: String
+  avatar: S3ImageFieldInput
   email: String
   password: String
   posts: PostRelateToManyForUpdateInput
 }
+
+input S3ImageFieldInput {
+  upload: Upload
+  ref: String
+}
+
+"""
+The `Upload` scalar type represents a file upload.
+"""
+scalar Upload
 
 input PostRelateToManyForUpdateInput {
   disconnect: [PostWhereUniqueInput!]
@@ -117,6 +146,7 @@ input UserUpdateArgs {
 
 input UserCreateInput {
   name: String
+  avatar: S3ImageFieldInput
   email: String
   password: String
   posts: PostRelateToManyForCreateInput
@@ -313,6 +343,7 @@ input TagCreateInput {
 type HomePage {
   id: ID!
   copy: HomePage_copy_Document
+  heroImage: S3ImageFieldOutput
   youtubeUrl: String
 }
 
@@ -322,6 +353,16 @@ type HomePage_copy_Document {
 
 input HomePageWhereUniqueInput {
   id: ID
+}
+
+type S3ImageFieldOutputType implements S3ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: S3ImageExtension!
+  ref: String!
+  url: String!
 }
 
 input HomePageWhereInput {
@@ -339,6 +380,7 @@ input HomePageOrderByInput {
 
 input HomePageUpdateInput {
   copy: JSON
+  heroImage: S3ImageFieldInput
   youtubeUrl: String
 }
 
@@ -349,6 +391,7 @@ input HomePageUpdateArgs {
 
 input HomePageCreateInput {
   copy: JSON
+  heroImage: S3ImageFieldInput
   youtubeUrl: String
 }
 

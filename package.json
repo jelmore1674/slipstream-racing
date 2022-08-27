@@ -14,9 +14,11 @@
 	},
 	"scripts": {
 		"build": "turbo run build",
+		"build:cms": "turbo run build --filter=cms",
+		"build:web": "turbo run build --filter=web",
+		"cms": "yarn workspace cms",
 		"dev": "turbo run dev --parallel",
 		"lint": "turbo run lint",
-		"web": "yarn workspace web",
-		"cms": "yarn workspace cms"
+		"web": "yarn workspace web"
 	}
 }

@@ -9,6 +9,7 @@
 		"postinstall": "keystone postinstall"
 	},
 	"dependencies": {
+		"@k6-contrib/fields-s3": "^2.0.0",
 		"@keystone-6/auth": "^4.0.0",
 		"@keystone-6/core": "^2.1.0",
 		"@keystone-6/fields-document": "^4.0.0",

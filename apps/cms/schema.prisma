@@ -13,11 +13,16 @@ generator client {
 }
 
 model User {
-  id       String @id @default(cuid())
-  name     String @default("")
-  email    String @unique @default("")
-  password String
-  posts    Post[] @relation("Post_author")
+  id               String  @id @default(cuid())
+  name             String  @default("")
+  avatar_filesize  Int?
+  avatar_extension String?
+  avatar_width     Int?
+  avatar_height    Int?
+  avatar_id        String?
+  email            String  @unique @default("")
+  password         String
+  posts            Post[]  @relation("Post_author")
 }
 
 model Post {
@@ -40,7 +45,12 @@ model Tag {
 }
 
 model HomePage {
-  id         String @id @default(cuid())
-  copy       Json   @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  youtubeUrl String @default("")
+  id                  String  @id @default(cuid())
+  copy                Json    @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  heroImage_filesize  Int?
+  heroImage_extension String?
+  heroImage_width     Int?
+  heroImage_height    Int?
+  heroImage_id        String?
+  youtubeUrl          String  @default("")
 }

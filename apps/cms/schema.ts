@@ -36,6 +36,30 @@ import { document } from '@keystone-6/fields-document';
 // our types to a stricter subset that is type-aware of other lists in our schema
 // that Typescript cannot easily infer.
 import { Lists } from '.keystone/types';
+import { S3Config, s3Image } from '@k6-contrib/fields-s3';
+import dotenv from 'dotenv';
+import { validateUrl } from './utils';
+
+dotenv.config();
+
+const s3Config: S3Config = {
+	transformFilename(str) {
+		return str;
+	},
+	bucket: process.env.S3_BUCKET as string, // name of bucket
+	folder: process.env.S3_PATH,
+	baseUrl: process.env.S3_BASE_URL, // if provided the url is not compouted from endpoint and folder, rather use this as `${baseUrl}/${filename}`
+	s3Options: {
+		accessKeyId: process.env.S3_ACCESS_KEY_ID,
+		secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+		endpoint: process.env.S3_ENDPOINT, // use region for aws, endpoint for s3 compatible storage
+	},
+	uploadParams() {
+		return {
+			ACL: 'public-read', // needed to make it public
+		};
+	},
+};
 
 // We have a users list, a blogs list, and tags for blog posts, so they can be filtered.
 // Each property on the exported object will become the name of a list (a.k.a. the `listKey`),
@@ -47,6 +71,7 @@ export const lists: Lists = {
 		// a name so we can refer to them, and a way to connect users to posts.
 		fields: {
 			name: text({ validation: { isRequired: true } }),
+			avatar: s3Image({ s3Config }),
 			email: text({
 				validation: { isRequired: true },
 				isIndexed: 'unique',
@@ -154,7 +179,21 @@ export const lists: Lists = {
 				links: true,
 				dividers: true,
 			}),
-			youtubeUrl: text(),
+			heroImage: s3Image({ s3Config }),
+			youtubeUrl: text({
+				hooks: {
+					validateInput: ({
+						resolvedData,
+						addValidationError,
+						item,
+					}) => {
+						const { youtubeUrl } = resolvedData;
+						if (!validateUrl(item?.youtubeUrl || youtubeUrl)) {
+							addValidationError('Not a valid url');
+						}
+					},
+				},
+			}),
 		},
 	},
 };
