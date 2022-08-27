@@ -1,11 +1,9 @@
 name: Deploy cms
 
 on:
-    workflow_run:
-        workflows: ['Build cms']
-        branches: [main]
-        types:
-            - completed
+    push:
+        branches:
+            - main
 
 jobs:
     deploy:
