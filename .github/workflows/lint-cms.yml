@@ -1,0 +1,25 @@
+name: Lint cms
+# It only runs when the cms app has changed or this worflow has changed
+on:
+    push:
+        branches-ignore:
+            - main
+        paths:
+            - 'apps/cms/**'
+            - '.github/workflows/lint-cms.yml'
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '16.15.0'
+                  cache: 'yarn'
+            - run: yarn install --frozen-lockfile
+            - run: |
+                  touch .env                  
+                  echo "${{secrets.LINT_ENV_FILE}}" >> .env
+            - run: yarn build --filter=cms...
+            - run: yarn lint --filter=cms...
