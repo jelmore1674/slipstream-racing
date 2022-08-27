@@ -6,12 +6,19 @@ import Head from 'next/head';
 import React, { Fragment } from 'react';
 import { EngineMapData, SeoData } from 'types';
 
-const filterCars = (value) => {
-	const filteredCars = engineMapData
-		.filter((item) => {
-			return item.carName.toLowerCase().includes(value.toLowerCase());
-		})
-		.slice(0, 4);
+const filterCars = (value: string) => {
+	let filteredCars;
+	if (value !== '') {
+		filteredCars = engineMapData
+			.filter((item) => {
+				return item.carName.toLowerCase().includes(value.toLowerCase());
+			})
+			.slice(0, 4);
+	} else {
+		filteredCars = engineMapData.filter((item) => {
+			return item.carName.toLowerCase();
+		});
+	}
 
 	return filteredCars.map((item) => {
 		return {
@@ -28,7 +35,7 @@ const loadOptions = (inputValue, callback) => {
 };
 
 const seoData = {
-	url: 'https://slipstreamracing.net/driver-resources/assetto-corsa-competizione-engine-map-guide',
+	url: 'https://slipstreamracing.net/assetto-corsa-competizione-engine-map-guide',
 	title: 'ACC Engine Map Guide | Slipstream Racing',
 	description:
 		'Trying to find the best engine map for your car in ACC? Check out our ACC Engine Map Guide!',
@@ -67,6 +74,7 @@ const ACCEngineMapGuide = ({ data, seoData }: Props) => {
 			<CarSearchSection
 				handleInputChange={handleInputChange}
 				loadOptions={loadOptions}
+				filterCars={filterCars}
 				setFilterValue={setFilterValue}
 			/>
 			<Section backgroundColor='#aaa' style={{ borderRadius: '4px' }}>

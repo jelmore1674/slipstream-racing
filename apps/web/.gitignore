@@ -26,7 +26,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env
 .env*.local
 
 # vercel
@@ -41,7 +40,3 @@ sitemap-*.xml
 
 # robots.txt
 robots.txt
-
-# turborepo
-.turbo
-.cache

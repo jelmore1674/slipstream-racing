@@ -60,12 +60,17 @@ const customStyles = {
 };
 
 interface Props {
+	filterCars: (a: string) => {
+		label: string;
+		value: string;
+	}[];
 	handleInputChange: (value: string) => void;
 	loadOptions: (inputValue: string, state: any) => void;
 	setState: (value: any) => void;
 }
 
 export const CarSearch = ({
+	filterCars,
 	handleInputChange,
 	loadOptions,
 	setState,
@@ -73,6 +78,7 @@ export const CarSearch = ({
 	return (
 		<>
 			<AsyncSelect
+				defaultOptions={filterCars('')}
 				id='car-search'
 				instanceId='car-search'
 				getOptionValue={(option: any) => {

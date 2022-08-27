@@ -10,10 +10,11 @@ const imgPath = `${CDN}/home`;
 
 interface Props {
 	copy: string;
+	heroImage: string;
 	youtubeLink: string;
 }
 
-const Home: NextPage<Props> = ({ copy, youtubeLink }) => {
+const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
 	return (
 		<Fragment>
 			<Head>
@@ -24,7 +25,7 @@ const Home: NextPage<Props> = ({ copy, youtubeLink }) => {
 					key='ogtitle'
 				/>
 			</Head>
-			<HeroSection backgroundImage={`${imgPath}/hero.png`} />
+			<HeroSection backgroundImage={heroImage} />
 			<IntroSection copy={copy} youtubeLink={youtubeLink} />
 			<HostedSection src={`${imgPath}/simracinggp-wordmark.svg`} />
 		</Fragment>
@@ -37,11 +38,14 @@ export async function getStaticProps() {
 	const results = await client.query({
 		query: gql`
 			query GetHomePage {
-				page(id: "/", idType: URI) {
-					homePage {
-						copy
-						youtubeLink
+				homePages {
+					copy {
+						document
 					}
+					heroImage {
+						url
+					}
+					youtubeUrl
 				}
 			}
 		`,
@@ -49,8 +53,9 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			copy: results.data.page.homePage.copy,
-			youtubeLink: results.data.page.homePage.youtubeLink,
+			copy: results.data.homePages[0].copy.document,
+			heroImage: results.data.homePages[0].heroImage.url,
+			youtubeLink: results.data.homePages[0].youtubeUrl,
 		},
 	};
 }
