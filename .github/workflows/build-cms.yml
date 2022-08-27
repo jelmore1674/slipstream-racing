@@ -1,4 +1,4 @@
-name: Lint cms
+name: Build cms
 # It only runs when the cms app has changed or this worflow has changed
 on:
     push:
@@ -22,4 +22,3 @@ jobs:
                   touch .env                  
                   echo "${{secrets.LINT_ENV_FILE}}" >> .env
             - run: yarn build --filter=cms...
-            - run: yarn lint --filter=cms...
