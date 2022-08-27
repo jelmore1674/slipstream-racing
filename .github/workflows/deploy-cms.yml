@@ -1,0 +1,40 @@
+name: Deploy cms
+
+on:
+    workflow_run:
+        workflows: ['Lint cms']
+        branches: [main]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '16.15.0'
+                  cache: 'yarn'
+            - run: yarn install --immutable
+            - name: Set up SSH access to servers
+              shell: bash
+              env:
+                  DEPLOYMENT_SSH_KEY: ${{secrets.DEPLOYMENT_SSH_KEY}}
+              run: |
+                  mkdir -p ~/.ssh/
+                  echo "$DEPLOYMENT_SSH_KEY" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+            - name: Deploy to development server
+              env:
+                  DEPLOYMENT_HOST: ${{secrets.DEPLOYMENT_HOST}}
+                  GITHUB_REPOSITORY: ${{github.repository}}
+              run: |
+                  export NVM_DIR=~/.nvm
+                  source ~/.nvm/nvm.sh
+                  ssh-keyscan ${DEPLOYMENT_HOST} >> ~/.ssh/known_hosts
+                  echo "DEPLOYMENT_HOST=$DEPLOYMENT_HOST" >> .env
+                  echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY" >> .env
+                  yarn cms deploy production
+        env:
+            CI: true

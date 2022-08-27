@@ -16,7 +16,7 @@ module.exports = {
 		production: {
 			...commonSetup,
 			host: process.env.DEPLOYMENT_HOST,
-			'post-deploy': 'zsh ./.deploy-hooks/deploy-sh.sh production',
+			'post-deploy': 'zsh ./.deploy-hooks/deploy-cms.sh production',
 			ref: 'origin/main',
 		},
 	},

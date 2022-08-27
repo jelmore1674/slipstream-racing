@@ -6,7 +6,7 @@
 		"dev": "env-cmd -f ../../.env keystone dev",
 		"start": "env-cmd -f ../../.env keystone start",
 		"build": "env-cmd -f ../../.env keystone build",
-		"deploy": "yarn env-cmd -f ../../.env pm2 deploy",
+		"deploy": "env-cmd -f ../../.env pm2 deploy",
 		"postinstall": "keystone postinstall"
 	},
 	"dependencies": {
