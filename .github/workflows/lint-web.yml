@@ -1,0 +1,25 @@
+name: Lint Web
+# It only runs when the web app has changed or this worflow has changed
+on:
+    push:
+        branches-ignore:
+            - main
+        paths:
+            - 'apps/web/**'
+            - '.github/workflows/lint-web.yml'
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '16.15.0'
+                  cache: 'yarn'
+            - run: yarn install --frozen-lockfile
+            - run: |
+                  touch .env                  
+                  echo "${{secrets.LINT_ENV_FILE}}" >> .env
+            - run: yarn build --filter=web...
+            - run: yarn lint --filter=web...
