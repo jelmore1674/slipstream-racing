@@ -4,7 +4,7 @@ import {
 	EngineMapTable,
 	EngineMapTableHeader,
 	Section,
-} from 'components/Elements';
+} from '../Elements';
 import React, { Fragment } from 'react';
 import { EngineMapRow } from '../Blocks';
 

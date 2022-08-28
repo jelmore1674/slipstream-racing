@@ -1,5 +1,4 @@
-import { PageHeading } from 'components/Elements';
-import { PDFViewer } from 'components/Sections';
+import { PageHeading, PDFViewer } from '@components';
 import Head from 'next/head';
 import React from 'react';
 

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { CDN } from '@data';
-import { HeroSection, HostedSection, IntroSection } from 'components/Sections';
+import { HeroSection, HostedSection, IntroSection } from '@components';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { Fragment } from 'react';

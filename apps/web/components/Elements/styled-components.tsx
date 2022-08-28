@@ -4,9 +4,8 @@ import { ThemeProps } from '../../types';
 export const CTAButton = styled.a<{
 	color?: string;
 	theme?: ThemeProps;
-}>((p) => {
-	const { color } = p;
-	let backgroundColor = !color ? p.theme.colors.primary : color;
+}>(({ color, theme }) => {
+	let backgroundColor = !color ? theme.colors.primary : color;
 	return {
 		alignItems: 'center',
 		backgroundColor,
@@ -132,7 +131,7 @@ export const EngineMapTableHeader = styled.h3({
 	textTransform: 'capitalize',
 });
 
-export const EngineMapRow = styled.div({
+export const EngineMapRowWrapper = styled.div({
 	display: 'flex',
 	flexDirection: 'row',
 });

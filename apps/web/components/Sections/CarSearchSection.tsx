@@ -1,4 +1,4 @@
-import { CarSearch, Section } from 'components/Elements';
+import { CarSearch, Section } from '../Elements';
 import React from 'react';
 
 interface Props {

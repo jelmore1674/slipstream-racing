@@ -1,18 +1,18 @@
-import { CDN } from '@data';
 import {
 	ButtonGrid,
 	DownloadButton,
 	IFrame,
 	PageHeading,
+	PDFViewer,
 	Section,
 	VideoPlayer,
-} from 'components/Elements';
-import { PDFViewer } from 'components/Sections';
-import Head from 'next/head';
-import React, { Fragment } from 'react';
-import { FaDownload } from 'react-icons/fa';
-import type { NextPage } from 'next';
+} from '@components';
+import { CDN } from '@data';
 import { SeoData } from '@types';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { Fragment } from 'react';
+import { FaDownload } from 'react-icons/fa';
 
 const imgPath = `${CDN}/driver-resources/acc-liveries`;
 
