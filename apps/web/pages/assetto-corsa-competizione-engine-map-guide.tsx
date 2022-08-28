@@ -3,7 +3,7 @@ import { CTAButton, PageHeading, Section } from 'components/Elements';
 import { CarSearchSection, EngineMapTableSection } from 'components/Sections';
 import { engineMapData } from 'data/engineMapData';
 import Head from 'next/head';
-import React, { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { EngineMapData, SeoData } from 'types';
 
 const filterCars = (value: string) => {
@@ -46,8 +46,8 @@ interface Props {
 }
 
 const ACCEngineMapGuide = ({ data, seoData }: Props) => {
-	const [, setValue] = React.useState('');
-	const [filterValue, setFilterValue] = React.useState('');
+	const [, setValue] = useState('');
+	const [filterValue, setFilterValue] = useState('');
 
 	const { url, title, description } = seoData;
 
