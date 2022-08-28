@@ -1,9 +1,9 @@
-import { PageHeading } from 'components/Elements';
 import {
 	CarSearchSection,
 	EngineMapTableSection,
+	PageHeading,
 	SignUpBanner,
-} from 'components/Sections';
+} from '@components';
 import { engineMapData } from '@data';
 import Head from 'next/head';
 import { Fragment, useState } from 'react';

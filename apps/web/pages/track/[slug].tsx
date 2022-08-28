@@ -8,7 +8,7 @@
 // import { client } from '../../lib/apollo';
 // import { CDN } from '@data';
 // import Image from 'next/image';
-// import { Column, Section, VideoPlayer } from 'components/Elements';
+// import { Column, Section, VideoPlayer } from '../Elements';
 
 const Post = () => {
 	// const { title, track, content, slug } = data;

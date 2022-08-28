@@ -6,7 +6,7 @@ import {
 	Heading,
 	Section,
 	VideoPlayer,
-} from 'components/Elements';
+} from '../Elements';
 import React from 'react';
 import { SiDiscord } from 'react-icons/si';
 import { theme } from 'styles/global';

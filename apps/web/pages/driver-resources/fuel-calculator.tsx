@@ -1,7 +1,7 @@
 import { SeoData } from '@types';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 const seoData = {
 	url: 'https://slipstreamracing.net/driver-resources/fuel-calculator',

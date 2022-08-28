@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { HeroLogo } from 'components/Elements';
+import { HeroLogo } from '../Elements';
 import React from 'react';
 
 const HeroWrapper = styled.div<{ src: string }>(({ src }) => ({
