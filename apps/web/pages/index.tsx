@@ -8,6 +8,7 @@ import { client } from '../lib/apollo';
 
 const imgPath = `${CDN}/home`;
 
+// Props returned from query
 interface Props {
 	copy: string;
 	heroImage: string;
