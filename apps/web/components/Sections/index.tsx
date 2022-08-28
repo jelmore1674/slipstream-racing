@@ -7,3 +7,4 @@ export * from './HostedSection';
 export * from './IntroSection';
 export * from './Nav';
 export * from './PDFViewer';
+export * from './SignUpBanner';
