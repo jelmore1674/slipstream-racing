@@ -6,4 +6,4 @@
 
 ## About
 
-This is the github repository for Slipstream Racing.
+This is the github repository for [Slipstream Racing](https://slipstreamracing.net).
