@@ -7,6 +7,7 @@ type User {
   avatar: S3ImageFieldOutput
   email: String
   password: PasswordState
+  isAdmin: Boolean
   posts(
     where: PostWhereInput! = {}
     orderBy: [PostOrderByInput!]! = []
@@ -49,6 +50,7 @@ input UserWhereInput {
   id: IDFilter
   name: StringFilter
   email: StringFilter
+  isAdmin: BooleanFilter
   posts: PostManyRelationFilter
 }
 
@@ -97,6 +99,11 @@ input NestedStringFilter {
   not: NestedStringFilter
 }
 
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
+}
+
 input PostManyRelationFilter {
   every: PostWhereInput
   some: PostWhereInput
@@ -107,6 +114,7 @@ input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  isAdmin: OrderDirection
 }
 
 enum OrderDirection {
@@ -119,6 +127,7 @@ input UserUpdateInput {
   avatar: S3ImageFieldInput
   email: String
   password: String
+  isAdmin: Boolean
   posts: PostRelateToManyForUpdateInput
 }
 
@@ -149,6 +158,7 @@ input UserCreateInput {
   avatar: S3ImageFieldInput
   email: String
   password: String
+  isAdmin: Boolean
   posts: PostRelateToManyForCreateInput
 }
 

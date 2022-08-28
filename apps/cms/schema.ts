@@ -20,6 +20,7 @@ import { list } from '@keystone-6/core';
 // We're using some common fields in the starter. Check out https://keystonejs.com/docs/apis/fields#fields-api
 // for the full list of fields.
 import {
+	checkbox,
 	text,
 	relationship,
 	password,
@@ -39,6 +40,11 @@ import { Lists } from '.keystone/types';
 import { S3Config, s3Image } from '@k6-contrib/fields-s3';
 import dotenv from 'dotenv';
 import { validateUrl } from './utils';
+import {
+	ListAccessControl,
+	ListOperationAccessControl,
+	SessionContext,
+} from '@keystone-6/core/types';
 
 dotenv.config();
 
@@ -61,12 +67,51 @@ const s3Config: S3Config = {
 	},
 };
 
+type Session = {
+	itemId: string;
+	data: {
+		isAdmin: boolean;
+	};
+};
+
+type PersonData = {
+	id: string;
+	name: string;
+	email: string;
+	isAdmin: boolean;
+};
+
+// If admin, gains all privileges
+const isAdmin = ({ session }: { session: Session }) => session?.data.isAdmin;
+// If person, gets privileges to edit self.
+const isPerson = ({ session, item }: { session: Session; item: PersonData }) =>
+	session?.itemId == item.id;
+// filters the user based on their id. So you should not be able to see the other others if not an admin
+const filterUsers = ({ session }: { session: Session }) => {
+	if (session?.data.isAdmin) {
+		return true;
+	}
+	return { id: { equals: session?.itemId } };
+};
 // We have a users list, a blogs list, and tags for blog posts, so they can be filtered.
 // Each property on the exported object will become the name of a list (a.k.a. the `listKey`),
 // with the value being the definition of the list, including the fields.
 export const lists: Lists = {
 	// Here we define the user list.
 	User: list({
+		access: {
+			operation: {
+				create: isAdmin,
+				update: isAdmin,
+				delete: isAdmin,
+			},
+			item: {
+				update: isPerson,
+			},
+			filter: {
+				query: filterUsers,
+			},
+		},
 		// Here are the fields that `User` will have. We want an email and password so they can log in
 		// a name so we can refer to them, and a way to connect users to posts.
 		fields: {
@@ -79,6 +124,8 @@ export const lists: Lists = {
 			}),
 			// The password field takes care of hiding details and hashing values
 			password: password({ validation: { isRequired: true } }),
+			// Make administrator
+			isAdmin: checkbox(),
 			// Relationships allow us to reference other lists. In this case,
 			// we want a user to have many posts, and we are saying that the user
 			// should be referencable by the 'author' field of posts.
@@ -95,6 +142,9 @@ export const lists: Lists = {
 	// Our second list is the Posts list. We've got a few more fields here
 	// so we have all the info we need for displaying posts.
 	Post: list({
+		ui: {
+			isHidden: true,
+		},
 		fields: {
 			title: text(),
 			// Having the status here will make it easy for us to choose whether to display
