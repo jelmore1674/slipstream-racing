@@ -84,8 +84,19 @@ type PersonData = {
 // If admin, gains all privileges
 const isAdmin = ({ session }: { session: Session }) => session?.data.isAdmin;
 // If person, gets privileges to edit self.
-const isPerson = ({ session, item }: { session: Session; item: PersonData }) =>
-	session?.itemId == item.id;
+const isPersonOrAdmin = ({
+	session,
+	item,
+}: {
+	session: Session;
+	item: PersonData;
+}) => {
+	if (session?.data.isAdmin) {
+		return true;
+	}
+	return session?.itemId == item.id;
+};
+
 // filters the user based on their id. So you should not be able to see the other others if not an admin
 const filterUsers = ({ session }: { session: Session }) => {
 	if (session?.data.isAdmin) {
@@ -102,11 +113,10 @@ export const lists: Lists = {
 		access: {
 			operation: {
 				create: isAdmin,
-				update: isAdmin,
 				delete: isAdmin,
 			},
 			item: {
-				update: isPerson,
+				update: isPersonOrAdmin,
 			},
 			filter: {
 				query: filterUsers,
@@ -125,7 +135,11 @@ export const lists: Lists = {
 			// The password field takes care of hiding details and hashing values
 			password: password({ validation: { isRequired: true } }),
 			// Make administrator
-			isAdmin: checkbox(),
+			isAdmin: checkbox({
+				access: {
+					update: isAdmin,
+				},
+			}),
 			// Relationships allow us to reference other lists. In this case,
 			// we want a user to have many posts, and we are saying that the user
 			// should be referencable by the 'author' field of posts.
