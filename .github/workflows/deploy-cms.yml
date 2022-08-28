@@ -4,6 +4,11 @@ on:
     push:
         branches:
             - main
+        paths:
+            - 'apps/cms/**'
+            - '.github/workflows/lint-cms.yml'
+            - '.github/workflows/deploy-cms.yml'
+            - '.deploy-hooks/deploy-cms.sh'
 
 jobs:
     deploy:
