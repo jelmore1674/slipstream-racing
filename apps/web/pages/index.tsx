@@ -3,7 +3,7 @@ import { CDN } from '@data';
 import { HeroSection, HostedSection, IntroSection } from 'components/Sections';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { client } from '../lib/apollo';
 
 const imgPath = `${CDN}/home`;
@@ -57,5 +57,6 @@ export async function getStaticProps() {
 			heroImage: results.data.homePages[0].heroImage.url,
 			youtubeLink: results.data.homePages[0].youtubeUrl,
 		},
+		revalidate: 60,
 	};
 }
