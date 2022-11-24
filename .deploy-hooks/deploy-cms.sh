@@ -1,7 +1,9 @@
 #! /bin/bash
 
 set -eu -o pipefail
-
+# Install dependencies, build the project, and restart the front-end server
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
 echo '\e[1;31mInstalling packages... 🎉'
 yarn install --frozen-lockfile
 echo '\e[1;31mBuilding application... 🛠️'
