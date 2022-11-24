@@ -1,3 +1,5 @@
+#! /bin/bash
+
 set -eu -o pipefail
 # Install dependencies, build the project, and restart the front-end server
 export NVM_DIR=~/.nvm
