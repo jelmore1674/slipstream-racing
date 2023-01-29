@@ -36,28 +36,33 @@ const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
 export default Home;
 
 export async function getStaticProps() {
-	const results = await client.query({
-		query: gql`
-			query GetHomePage {
-				homePages {
-					copy {
-						document
+	try {
+		const [{ data }]: any = await client.query({
+			query: gql`
+				query GetHomePage {
+					homePages {
+						copy {
+							document
+						}
+						heroImage {
+							url
+						}
+						youtubeUrl
 					}
-					heroImage {
-						url
-					}
-					youtubeUrl
 				}
-			}
-		`,
-	});
+			`,
+		});
 
-	return {
-		props: {
-			copy: results.data.homePages[0].copy.document,
-			heroImage: results.data.homePages[0].heroImage.url,
-			youtubeLink: results.data.homePages[0].youtubeUrl,
-		},
-		revalidate: 60,
-	};
+		return {
+			props: {
+				copy: data.homePages.copy.document,
+				heroImage: data.homePages.heroImage.url,
+				youtubeLink: data.homePages.youtubeUrl,
+			},
+			revalidate: 60,
+		};
+	} catch (error) {
+		console.log({ error })
+
+	}
 }
