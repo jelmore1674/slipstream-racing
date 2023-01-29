@@ -2,6 +2,6 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 // Apollo Client
 export const client = new ApolloClient({
-	uri: process.env.NEXT_PUBLIC_GRAPHQL_API,
+	uri: 'https://cms.slipstreamracing.net/api/graphql',
 	cache: new InMemoryCache(),
 });
