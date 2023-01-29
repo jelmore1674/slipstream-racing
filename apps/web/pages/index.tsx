@@ -35,7 +35,7 @@ const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const results = await client.query({
 		query: gql`
 			query GetHomePage {
@@ -58,6 +58,5 @@ export async function getStaticProps() {
 			heroImage: results.data.homePages[0].heroImage.url,
 			youtubeLink: results.data.homePages[0].youtubeUrl,
 		},
-		revalidate: 60,
 	};
 }
