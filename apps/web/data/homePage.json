@@ -2,7 +2,6 @@
 	"data": {
 		"homePages": [
 			{
-				"id": "cl7cbpjpb01153hvcv0sd5zcx",
 				"copy": {
 					"document": [
 						{
@@ -21,7 +20,11 @@
 							]
 						}
 					]
-				}
+				},
+				"heroImage": {
+					"url": "https://assets.slipstreamracing.net/SlipstreamRacing/keystone/cl7cbpily00013hvc0keo40qx.png"
+				},
+				"youtubeUrl": "https://youtu.be/dF2dVUKyyrM"
 			}
 		]
 	}
