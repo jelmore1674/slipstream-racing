@@ -5,6 +5,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { Fragment } from 'react';
 import { client } from '../lib/apollo';
+import fallbackData from '../data/homePage.json'
 
 const imgPath = `${CDN}/home`;
 
@@ -36,9 +37,8 @@ const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
 export default Home;
 
 export async function getStaticProps() {
-	try {
-		const [{ data }]: any = await client.query({
-			query: gql`
+	const { data } = await client.query({
+		query: gql`
 				query GetHomePage {
 					homePages {
 						copy {
@@ -51,18 +51,18 @@ export async function getStaticProps() {
 					}
 				}
 			`,
-		});
+	});
 
-		return {
-			props: {
-				copy: data.homePages.copy.document,
-				heroImage: data.homePages.heroImage.url,
-				youtubeLink: data.homePages.youtubeUrl,
-			},
-			revalidate: 60,
-		};
-	} catch (error) {
-		console.log({ error })
+	const [homePages] = data.homePages
 
-	}
+
+	return {
+		props: {
+			copy: homePages.copy.document,
+			heroImage: homePages.heroImage.url,
+			youtubeLink: homePages.youtubeUrl,
+		},
+		revalidate: 60,
+	};
+
 }
