@@ -14,9 +14,13 @@ interface Props {
 	copy: string;
 	heroImage: string;
 	youtubeLink: string;
+	error?: string
 }
 
-const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
+const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink, error }) => {
+	if (error) {
+		console.error(error)
+	}
 	return (
 		<Fragment>
 			<Head>
@@ -37,23 +41,30 @@ const Home: NextPage<Props> = ({ copy, heroImage, youtubeLink }) => {
 export default Home;
 
 export async function getStaticProps() {
-	const { data } = await client.query({
-		query: gql`
-				query GetHomePage {
-					homePages {
-						copy {
-							document
+	let homePages;
+	try {
+		const { data } = await client.query({
+			query: gql`
+					query GetHomePage {
+						homePages {
+							copy {
+								document
+							}
+							heroImage {
+								url
+							}
+							youtubeUrl
 						}
-						heroImage {
-							url
-						}
-						youtubeUrl
 					}
-				}
-			`,
-	});
+				`,
+		});
 
-	const [homePages] = data.homePages
+		homePages = data.homePages[0]
+	} catch (e) {
+		homePages = { ...fallbackData.data.homePages[0], e }
+
+
+	}
 
 
 	return {
@@ -61,6 +72,7 @@ export async function getStaticProps() {
 			copy: homePages.copy.document,
 			heroImage: homePages.heroImage.url,
 			youtubeLink: homePages.youtubeUrl,
+			error: homePages.e || null
 		},
 		revalidate: 60,
 	};
