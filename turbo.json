@@ -1,22 +1,42 @@
 {
-	"$schema": "https://turborepo.org/schema.json",
-	"pipeline": {
-		"build": {
-			"dependsOn": ["^build"],
-			"outputs": [".next/**", ".keystone/**"]
-		},
-		"web#build": {
-			"dependsOn": ["^build", "$NEXT_PUBLIC_GRAPHQL_API"],
-			"outputs": [".next/**"]
-		},
-		"dev": {
-			"dependsOn": ["$DATABASE_URL"],
-			"outputs": [],
-			"inputs": ["src/**/*.tsx", "src/**/*.ts"]
-		},
-		"lint": {
-			"outputs": []
-		}
-	},
-	"globalDependencies": [".env"]
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        ".keystone/**"
+      ]
+    },
+    "web#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**"
+      ],
+      "env": [
+        "NEXT_PUBLIC_GRAPHQL_API"
+      ]
+    },
+    "dev": {
+      "dependsOn": [],
+      "outputs": [],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
+      "env": [
+        "DATABASE_URL"
+      ]
+    },
+    "lint": {
+      "outputs": []
+    }
+  },
+  "globalDependencies": [
+    ".env"
+  ]
 }
